@@ -35,7 +35,7 @@
   </style>
 </head>
 <body>
-  <h1>今日の私のヒットポイント</h1>
+  <h1>現在の私のヒットポイントは...</h1>
 
   <div class="hp-bar-container">
     <div class="hp-bar" id="hpBar">0%</div>
@@ -56,6 +56,13 @@
       }
     }
 
+    function getHpBarColor(hp) {
+      if (hp >= 80) return "#4CAF50";       // 緑
+      if (hp >= 50) return "#8BC34A";       // 薄緑
+      if (hp >= 20) return "#FFEB3B";       // 黄色
+      return "#F44336";                     // 赤
+    }
+    
     const hp = Math.floor(Math.random() * 101); // 0〜100のランダム値
     const hpBar = document.getElementById("hpBar");
     const statusMessage = document.getElementById("statusMessage");
