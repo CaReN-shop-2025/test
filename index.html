@@ -46,13 +46,13 @@
   <script>
     function getStatusMessage(hp) {
       if (hp >= 80) {
-        return "やる気MAX！今日はフルパワーで働けそうです！";
+        return "元気MAX！今日はフルパワーで働けそうです！";
       } else if (hp >= 50) {
         return "まあまあ元気です、ほどほどに働きます。";
       } else if (hp >= 20) {
-        return "ちょっと疲れ気味です…。ゆっくり目で働かせてください。";
+        return "ちょっと疲れ気味です…ゆっくりめで働かせてください。";
       } else {
-        return "HPゼロ寸前…今日は何もしないで休みます！";
+        return "HPゼロ寸前…今日は何もしないで休みます😨";
       }
     }
 
@@ -69,6 +69,7 @@
 
     hpBar.style.width = hp + "%";
     hpBar.textContent = hp + "%";
+    hpBar.style.backgroundColor = getHpBarColor(hp);
     statusMessage.textContent = getStatusMessage(hp);
   </script>
 </body>
