@@ -1,15 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>メッセージページ</title>
+  <title>今日の私のヒットポイント</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 50px;
+      background: #f4f4f4;
+    }
+    .hp-bar-container {
+      width: 80%;
+      max-width: 400px;
+      height: 30px;
+      background-color: #ddd;
+      border-radius: 5px;
+      margin: 20px auto;
+      overflow: hidden;
+    }
+    .hp-bar {
+      height: 100%;
+      background-color: #4CAF50;
+      text-align: right;
+      line-height: 30px;
+      color: white;
+      padding-right: 10px;
+      transition: width 0.5s ease-in-out;
+    }
+    .message {
+      font-size: 1.5em;
+      margin-top: 30px;
+    }
+  </style>
 </head>
 <body>
-  <h1 id="message"></h1>
+  <h1>今日の私のヒットポイント</h1>
+
+  <div class="hp-bar-container">
+    <div class="hp-bar" id="hpBar">0%</div>
+  </div>
+
+  <div class="message" id="statusMessage"></div>
+
   <script>
-    const path = window.location.pathname.split("/").filter(Boolean);
-    const message = path.length > 1 ? path[1] : "デフォルトのメッセージ";
-    document.getElementById("message").textContent = `これは「${message}」のページです`;
+    function getStatusMessage(hp) {
+      if (hp >= 80) {
+        return "やる気MAX！今日はフルパワーで働けそうです！";
+      } else if (hp >= 50) {
+        return "まあまあ元気です、ほどほどに働きます。";
+      } else if (hp >= 20) {
+        return "ちょっと疲れ気味です…。ゆっくり目で働かせてください。";
+      } else {
+        return "HPゼロ寸前…今日は何もしないで休みます！";
+      }
+    }
+
+    const hp = Math.floor(Math.random() * 101); // 0〜100のランダム値
+    const hpBar = document.getElementById("hpBar");
+    const statusMessage = document.getElementById("statusMessage");
+
+    hpBar.style.width = hp + "%";
+    hpBar.textContent = hp + "%";
+    statusMessage.textContent = getStatusMessage(hp);
   </script>
 </body>
 </html>
