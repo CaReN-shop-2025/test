@@ -1,0 +1,16 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>動的文字列表示</title>
+</head>
+<body>
+  <h1 id="message"></h1>
+  <script>
+    const path = window.location.pathname.replace("/", "");
+    const messageElement = document.getElementById("message");
+    messageElement.textContent = `これは「${path}」のページです`;
+  </script>
+</body>
+</html>
